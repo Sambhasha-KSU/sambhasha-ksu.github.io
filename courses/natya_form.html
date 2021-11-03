@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="https://taniarascia.github.io/primitive/css/main.css"> -->
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("https://cdn.exoticindia.com/images/products/original/sculptures-2016/xm15.jpg") right top no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-size: 14pt;
+  font-weight: bold;
+  font-family: "Spartan";
+  color: #2A293E;
+}
+
+.container {
+  background: #f8f4e5;
+  /*padding: 50px 100px;*/
+  padding: 20px;
+  border-top: 10px solid #f45702;
+  width: 80%;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 50%;
+  }
+}
+
+label, input, textarea, select {
+  display: block;
+  /*width: 50%;*/
+  font-size: 12pt;
+  line-height: 24pt;
+  font-family: "Spartan";
+}
+
+label {
+  width: 100%;
+}
+
+input {
+  margin-bottom: 24pt;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 12pt;
+  line-height: 20pt;
+  /*font-style: italic;*/
+  margin: 0.5em 0 1em 0;
+}
+
+span {
+  font-size: 8pt;
+}
+
+em {
+  color: #f45702;
+  font-weight: bold;
+}
+
+input, textarea {
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  background: #f8f4e5;
+  padding-left: 5px;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border: 1px solid #6bd4b1;
+}
+
+textarea {
+  resize: none;
+}
+
+#spinner {
+  float: right;
+}
+
+button {
+  display: block;
+  float: right;
+  line-height: 24pt;
+  padding: 0 20px;
+  border: none;
+  background: #f45702;
+  color: white;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  border-bottom: 2px solid transparent;
+  outline: none;
+}
+button:hover {
+  background: inherit;
+  color: #f45702;
+  border-bottom: 2px solid #f45702;
+}
+
+::selection {
+  background: #ffc7b8;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  border: 1px solid #6bd4b1;
+  -webkit-text-fill-color: #2A293E;
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/*spinner*/
+
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: #f45702;
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*spinner end*/
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>Certificate course on The Science of Nāṭya</h1>
+<h3 id="desc">Karnataka Sanskrit University is going to offer a PG-Diploma Course on the Science of Nāṭya, specifically aimed at educating dancers, musicians, theatre artists, poets and practitioners of the other forms of art. Kindly answer the questionnaire below so that the course can be optimally planned.</h3>
+
+<form name="submit-to-google-sheet">
+  
+  <label for="ip1">Email</label>
+  <input id="ip1" name="email" type="email" placeholder="Email" required1>
+
+  <label for="ip2">Full Name</label>
+  <input id="ip2" type="text" name="Full Name" placeholder="Full Name" required1>
+
+  <label for="ip3">Country of residence</label>
+  <input id="ip3" type="text" name="Country of residence" placeholder="Country of residence" required1>
+
+  <label for="ip4">Contact number with country code</label>
+  <input id="ip4" type="text" name="Contact number with country code" placeholder="Contact number with country code" required1>
+
+  <label for="ip5">Gender</label>
+  <select id="ip5" name="Gender" required1>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+  </select>
+  <br><br>
+
+  <label for="ip6">Date of Birth</label>
+  <input id="ip6" type="date" name="Date of Birth" required1>
+
+  <label for="ip7">Are you a student/researcher or a working professional?</label>
+  <select id="ip7" name="Are you a student/researcher or a working professional?">
+      <option value="Student/researcher">Student/researcher</option>
+      <option value="Working professional">Working professional</option>
+  </select>
+  <br><br>
+
+  <label for="ip8">Are you trained in any art form? If yes, which art form and how long?</label>
+  <input id="ip8" type="text" name="Are you trained in any art form? If yes, which art form and how long?" placeholder="Enter here" required1>
+
+  <label for="ip9">Did you study or have the knowledge of Sanskrit Language?</label>
+  <select id="ip9" name="Did you study or have the knowledge of Sanskrit Language?">
+      <option value="No">No</option>
+      <option value="Yes, in school/college">Yes, in school/college</option>
+      <option value="Self-study">Self-study</option>
+  </select>
+  <br><br>
+
+  <label for="ip10">Why are you interested in this course?</label>
+  <textarea id="ip10" type="text" name="Why are you interested in this course?" placeholder="Enter here" required1></textarea>
+  <br><br>
+
+  <label>What time slots work for you? If more than one are suitable, please choose them.</label>
+  <label for="ip11">6:30 to 8 AM IST</label> <input id="ip11" type="checkbox" name="6:30 to 8 AM IST" value="yes">
+  <label for="ip12">5 to 6:30 PM IST</label> <input id="ip12" type="checkbox" name="5 to 6:30 PM IST" value="yes">
+  <label for="ip13">6 to 7:30 PM IST</label> <input id="ip13" type="checkbox" name="6 to 7:30 PM IST" value="yes">
+  <label for="ip14">9 to 10:30 PM IST</label> <input id="ip14" type="checkbox" name="9 to 10:30 PM IST" value="yes">
+
+  <div id="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <button type="submit">Submit</button>
+</form>
+
+</div>
+
+<!-- <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+ -->
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzxvu2IXLXm-WZK3-QZQmWEyRExai-LmaMevbSo2HH_ceXN6Mxit7JIx2oiYLj4dNsA/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const successMsg = "<h2 style='color: darkgreen; font-weight: bold'>Form submitted successfully</h2>";
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    document.querySelector("#spinner").setAttribute("class", "lds-spinner");
+document.querySelector("#desc").innerHTML = "";
+          document.querySelector("form").innerHTML = successMsg;
+  //   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  //     .then(response => {
+  //         document.querySelector("#desc").innerHTML = "";
+  //         document.querySelector("form").innerHTML = successMsg;
+  //       }
+  //     )
+  //     .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+</body>
+</html>
