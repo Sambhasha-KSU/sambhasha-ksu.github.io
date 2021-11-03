@@ -132,7 +132,7 @@ textarea:-webkit-autofill:focus {
 /*spinner*/
 
 .lds-spinner {
-  color: official;
+  /*color: official;*/
   display: inline-block;
   position: relative;
   width: 80px;
@@ -220,19 +220,19 @@ textarea:-webkit-autofill:focus {
 <form name="submit-to-google-sheet">
   
   <label for="ip1">Email</label>
-  <input id="ip1" name="email" type="email" placeholder="Email" required1>
+  <input id="ip1" name="email" type="email" placeholder="Email" required>
 
   <label for="ip2">Full Name</label>
-  <input id="ip2" type="text" name="Full Name" placeholder="Full Name" required1>
+  <input id="ip2" type="text" name="Full Name" placeholder="Full Name" required>
 
   <label for="ip3">Country of residence</label>
-  <input id="ip3" type="text" name="Country of residence" placeholder="Country of residence" required1>
+  <input id="ip3" type="text" name="Country of residence" placeholder="Country of residence" required>
 
   <label for="ip4">Contact number with country code</label>
-  <input id="ip4" type="text" name="Contact number with country code" placeholder="Contact number with country code" required1>
+  <input id="ip4" type="text" name="Contact number with country code" placeholder="Contact number with country code" required>
 
   <label for="ip5">Gender</label>
-  <select id="ip5" name="Gender" required1>
+  <select id="ip5" name="Gender" required>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
       <option value="Other">Other</option>
@@ -240,7 +240,7 @@ textarea:-webkit-autofill:focus {
   <br><br>
 
   <label for="ip6">Date of Birth</label>
-  <input id="ip6" type="date" name="Date of Birth" required1>
+  <input id="ip6" type="date" name="Date of Birth" required>
 
   <label for="ip7">Are you a student/researcher or a working professional?</label>
   <select id="ip7" name="Are you a student/researcher or a working professional?">
@@ -250,7 +250,7 @@ textarea:-webkit-autofill:focus {
   <br><br>
 
   <label for="ip8">Are you trained in any art form? If yes, which art form and how long?</label>
-  <input id="ip8" type="text" name="Are you trained in any art form? If yes, which art form and how long?" placeholder="Enter here" required1>
+  <input id="ip8" type="text" name="Are you trained in any art form? If yes, which art form and how long?" placeholder="Enter here" required>
 
   <label for="ip9">Did you study or have the knowledge of Sanskrit Language?</label>
   <select id="ip9" name="Did you study or have the knowledge of Sanskrit Language?">
@@ -261,7 +261,7 @@ textarea:-webkit-autofill:focus {
   <br><br>
 
   <label for="ip10">Why are you interested in this course?</label>
-  <textarea id="ip10" type="text" name="Why are you interested in this course?" placeholder="Enter here" required1></textarea>
+  <textarea id="ip10" type="text" name="Why are you interested in this course?" placeholder="Enter here" required></textarea>
   <br><br>
 
   <label>What time slots work for you? If more than one are suitable, please choose them.</label>
@@ -287,15 +287,15 @@ textarea:-webkit-autofill:focus {
   form.addEventListener('submit', e => {
     e.preventDefault();
     document.querySelector("#spinner").setAttribute("class", "lds-spinner");
-document.querySelector("#desc").innerHTML = "";
+    document.querySelector("#desc").innerHTML = "";
+    
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          document.querySelector("#desc").innerHTML = "";
           document.querySelector("form").innerHTML = successMsg;
-  //   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  //     .then(response => {
-  //         document.querySelector("#desc").innerHTML = "";
-  //         document.querySelector("form").innerHTML = successMsg;
-  //       }
-  //     )
-  //     .catch(error => console.error('Error!', error.message))
+        }
+      )
+      .catch(error => console.error('Error!', error.message))
   })
 </script>
 
