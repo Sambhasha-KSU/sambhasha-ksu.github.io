@@ -293,9 +293,16 @@ textarea:-webkit-autofill:focus {
   form.addEventListener('submit', e => {
     e.preventDefault();
     document.querySelector("#spinner").setAttribute("class", "lds-spinner");
-    document.querySelector("#desc").innerHTML = "";
-    
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+
+    fetch(scriptURL, {
+      method: 'POST', 
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        "Access-Control-Allow-Origin": "*"
+      },
+      mode: 'no-cors',
+      body: new FormData(form)
+    })
       .then(response => {
           document.querySelector("#desc").innerHTML = "";
           document.querySelector("form").innerHTML = successMsg;
