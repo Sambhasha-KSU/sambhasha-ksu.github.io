@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.menu a {
+  background-color: #93FF33;
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.menu option{
+  background-color: #93FF33;
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.center {
+  background-color: #e5e5e5;
+  float: center;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+.right {
+  background-color: #e5e5e5;
+  float: right;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#Sarga a').on('click', function () {
+      // document.querySelector('#Shloka').clear();
+      var sarga= ($(this).text());
+      var len = 5;
+
+      // if (sarga == "1") {
+      //       len = 95;
+      // } 
+      // else {
+      //     alert('I am other Sarga');
+      //     len = 76;
+      // }
+      $("#Shloka").empty();
+      for (var i = 1; i<=len; i++) {
+    var ele = document.createElement("a");
+    ele.classList = "dropdown-item";
+    ele.href = "#";
+    ele.innerText = "" + i;
+    document.querySelector('#Shloka').appendChild(ele);
+  }
+   $('#Shloka a').on('click', function () {
+    var shloka= ($(this).text());
+      $.ajaxPrefilter( 'script', function( options ) {
+    options.crossDomain = true;
+});
+
+$.ajax({
+  type: "GET",
+  url: 'Raghuvamshamv2.csv',
+}).done(successFunction);
+
+function successFunction(data) {
+ $('.mt-auto').remove(); 
+$("div.desc").empty();
+  var headerArr = ["सर्गसंख्या","श्लोकसंख्या","पद्यस्य पूर्वभूमिका", "पद्यम्", "पदविभागः", "दण्डान्वयः", "तात्पर्यकथनम्", "भावार्थकथनम्","पदार्थकथनम्", "आकाङ्क्षान्वयः", "पदपरिचयः", "अमरकोशवाचनम्", "विशिष्टसुबन्तशब्दानां वाचनम्", "क्रियापदवाचनम्", "सन्धिः", "विग्रहः", "प्रक्रिया", "आलङ्कारिकाः विशेषाः", "छन्दः"];
+
+  var allRows = data.split("$");
+  for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+    var rowCells = allRows[singleRow].split(',');
+    if (shloka == rowCells[1]) {
+       table = '<div class="container">';
+      table += '<div class="row">';  
+    for (var rowCell = 2,i=1; rowCell < rowCells.length; rowCell++,i++) {
+      if(i%2==0) {
+        table += '<div class="col-sm-4 bg-white text-black">';
+        table += '<h5><b>'+headerArr[rowCell]+'</b></h5><p>';
+        table += rowCells[rowCell];
+        table += '</p></div>';
+      } else {
+        table += '<div class="col-sm-4 bg-warning text-black">';
+        table += '<h5><b>'+headerArr[rowCell]+'</b></h5><p>';
+        table += rowCells[rowCell];
+        table += '</p></div>';
+      }
+      if (i%3==0) {
+        table += '</div></div>';
+        // table += '</br>';
+        table += '<div class="container"> <div class="row">';
+    }
+   
+  }
+} 
+   
+  }
+  table += '</div></div>';
+  table += '</div>';
+  console.log(table);
+ let footer = ' <!-- Copyright -->'+
+ '<footer class="mt-auto">'+
+    '<div style="background-color:#5DADE2;text-align:center;padding:10px;margin-top:7px">© Karnataka Samskrit University</div>;'+
+  '</div>'+
+'</footer>';
+ table += footer;
+  $("div.desc").append(table);
+}
+    });
+
+    });
+     
+});
+ 
+</script>
+</head>
+<body style="font-family:Verdana;color:#17202A;" class="d-flex flex-column min-vh-100">
+
+<div style="background-color:#33A2FF;padding:15px;text-align:center;">
+  <h1>रघुवंशम्</h1>
+</div>
+<br>
+  <!-- <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+
+  <div id="demo" class="collapse"> -->
+  </div>
+   <!--  <div class="checkbox">
+        <label><input type="checkbox">Pratipadartham</label>
+        <label><input type="checkbox">Bhavarthah</label>
+      </div> -->
+  </div>
+<div class="container">
+ <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+         सर्गसंख्या
+        </button>
+        <div class="dropdown-menu" id="Sarga">
+          <a class="dropdown-item" href="#">1</a>
+          <!-- <a class="dropdown-item" href="#">2</a> -->
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+         श्लोकसंख्या
+        </button>
+        <div class="dropdown-menu scrollable-menu" id="Shloka" role="menu">
+          <!-- <a class="dropdown-item" href="#">1</a>
+          <a class="dropdown-item" href="#">2</a> -->
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="desc" id="desc">
+  </div>
+ <!-- Copyright -->
+ <footer class="mt-auto">
+    <div style="background-color:#5DADE2;text-align:center;padding:10px;margin-top:7px">© Karnataka Samskrit University</div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+
