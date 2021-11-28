@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bona+Nova&family=Lobster+Two&family=Ubuntu+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova&display=swap");
 :root {
   --font1:"Bona Nova";
   /*--font2:"Ubuntu Condensed";*/
@@ -7,16 +7,6 @@
 
 * {
   box-sizing: border-box;
-}
-
-html, body {
-  /*background: #eee;*/
-}
-
-.centerize {
-  /*display: grid;*/
-  /*justify-items: center;*/
-  /*min-height: calc(100vh - 128px);*/
 }
 
 .faq {
