@@ -2,8 +2,7 @@
 :root {
   --font1:"Bona Nova";
   /*--font2:"Ubuntu Condensed";*/
-  --font3:"Lobster Two";
-  font-size: 18pt;
+  /*--font3:"Lobster Two";*/
 }
 
 * {
@@ -33,7 +32,8 @@ h1 {
 }
 
 details {
-  max-width: 38rem;
+  /*max-width: 48rem;*/
+  margin-bottom: 0.5rem;
 }
 
 details > summary {
@@ -68,7 +68,7 @@ summary:before {
   border-style: solid;
   border-color: transparent transparent transparent darkblue;
   position: absolute;
-  top: 0.6rem;
+  top: 1.2rem;
   left: 1rem;
   transform: rotate(0);
   transform-origin: 0.2rem 50%;
