@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<script async defer data-website-id="4f20190e-c2f3-40b9-9798-6df29cc743ea" src="https://umami-livid-psi.vercel.app/umami.js"></script>
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+<title>Tarkasangraha</title>
+<style>
+  :root {
+  --coral: hsl(23, 83%, 82%);
+  --coral--b: hsl(23, 99%, 75%);
+  --pink: hsl(335, 52%, 92%);
+  --pink--b: hsl(335, 82%, 86%);
+  --yellow: hsl(42, 97%, 85%);
+  --yellow--b: hsl(42, 100%, 73%);
+  --green: hsl(100, 64%, 86%);
+  --green--b: hsl(100, 41%, 76%);
+  --blue: hsl(187, 61%, 79%);
+  --blue--b: hsl(187, 54%, 68%);
+  --purple: hsl(283, 24%, 86%);
+  --purple--b: hsl(283, 43%, 80%);
+  --light-gray-blue: hsl(182, 29%, 96%);
+
+  --pageMax: 1260px;
+  --headerHeight: 60px;
+  --middleHeight: 300px;
+  --footerHeight: 100px;
+}
+  .container {
+    background: whitesmoke;
+    margin: 50px;
+    font-family: 'Noto Sans', sans-serif;
+  }
+  .node {
+    cursor: pointer;
+  }
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+  circle .leaf {
+    stroke: chocolate;
+  }
+  .node text {
+    font: 1.5em 'Noto Sans';
+  }
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+    stroke-opacity: 0.5;
+  }
+  input {
+    font-size: 1.2em;
+  }
+  /*text, circle, path {
+    transition-duration: 750ms;
+    transition-property: fill-opacity;
+  }*/  
+
+.coral {
+  background-color: var(--coral);
+  border: 1px solid var(--coral--b);
+}
+
+.pink {
+  background-color: var(--pink);
+  border: 1px solid var(--pink--b);
+}
+
+.yellow {
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow--b);
+}
+
+.green {
+  background-color: var(--green);
+  border: 1px solid var(--green--b);
+}
+
+.blue {
+  background-color: var(--blue);
+  border: 1px solid var(--blue--b);
+}
+
+.purple {
+  background-color: var(--purple);
+  border: 1px solid var(--purple--b)
+}
+
+.white {
+  background-color: white;
+}
+
+.title {
+  font-family: Halant;
+  font-weight: 500;
+  font-size: 2.5em;
+}
+
+ #details {
+  position: fixed;
+  left: 50vw;
+  top: 60vh;
+  font-size: 1.3em;
+  width: 40vw;
+  border-radius: 10px;
+  padding: 10px;
+ }
+
+ .sub_info {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 1px 1px 2px;
+ }
+
+  #header {
+    border-radius: 20px;
+  }
+
+ .rounded {
+  border-radius: 10px;
+ }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+.close {
+  color: white;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-body li {
+  list-style: ; padding: 10px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="css/switch-toggle.css"> -->
+<link href="https://fonts.googleapis.com/css2?family=Halant:wght@500&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> 
+</head>
+<body class="container">
+<div id="header" class="container green">
+
+    <div style="text-align: center; margin: 20px;">
+        <span class="title">अन्नम्भट्टस्य तर्कसंग्रहः</span>
+        <div style="font-size: 1.3em">
+            निधाय हृदि विश्वेशं विधाय गुरुवन्दनम्। &nbsp; बालानां सुखबोधाय क्रियते तर्कसंग्रहः॥
+        </div>
+    </div>
+
+    <div style="margin: 10px; margin-left: 30px">
+      <!-- example code for switch toggle -->
+        <!-- <span class="switch switch-normal"> -->
+          <!-- <input type="checkbox" class="switch" name="hideLong" id="hideLong" onclick="update()"> -->
+          <!-- <label for="hideLong">Hide Long Elements</label> -->
+        <!-- </span> -->
+        <!-- <button onclick="update()">Refresh</button> &nbsp;&nbsp; Select Root Node -->
+        Select Root Node
+      <select id="rootNode" style="font: 1.2em Noto Sans" onchange="changeRoot();">
+        <option value="पदार्थः">पदार्थः</option>
+        <option value="द्रव्यम्">द्रव्यम्</option>
+        <option value="गुणः">गुणः</option>
+        <option value="बुद्धिः">बुद्धिः</option>
+        <option value="प्रत्यक्षम्">प्रत्यक्षम्</option>
+        <option value="अनुमितिः">अनुमितिः</option>
+        <option value="उपमितिः">उपमितिः</option>
+        <option value="शाब्दम्">शाब्दम्</option>
+        <option value="हेत्वाभासः">हेत्वाभासः</option>
+      </select>
+        <!-- <input type="button" value="Collapse all nodes" onclick="collapseAllNodes()"> -->
+        <div style="float: right; margin-right: 30px;">
+          <a href="/" style="color: blue;">Sambhasha Home</a>
+          &nbsp; &nbsp;
+          <a href="contributors.html" style="color: blue;">Contributors</a>
+          &nbsp; &nbsp;
+          <a id="how_to_use_btn" style="color: blue;" href="#!">How to use</a>
+          <!-- <a style="color: blue;" href="">Contributors</a> -->
+          &nbsp; &nbsp;
+          <a style="color: blue;" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdu9wRDrhrBoGASuAhnlH9_k3Jn22U4LJZzuGSbXBV4WB1s5A/viewform">Submit Feedback</a>
+        </div>
+    </div>
+</div>
+
+<div id="how_to_use" class="modal">
+  <div class="modal-content" style="width: 50%">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>How to use</h2>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li>Click on the node or node-name <img src="img/dravya_node.png" width="100"> to expand further.</li>
+        <!-- <li>Click on the text <img src="img/dravya_text.png" width="100"> to get more information in info box.</li> -->
+        <li>The info box <img src="img/info_box.png" width="120"> can be dragged anywhere on the screen.</li>
+        <li>An open circle (node) <img src="img/visheShaH.png" width="100"> cannot be expanded further.</li>
+      </ul>
+    </div>
+    <!-- <div class="modal-footer"></div> -->
+  </div>
+</div>
+
+<div id="details"></div>
+
+<script src="js/d3.js"></script>
+<script src="js/drawTarka-2.3.3.min.js"></script>
+<script src="js/draggabilly.pkgd.min.js"></script>
+
+<script>
+var draggie = new Draggabilly("#details");
+let modal = document.getElementById("how_to_use");
+let btn = document.getElementById("how_to_use_btn");
+let span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
