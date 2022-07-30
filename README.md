@@ -1,6 +1,5 @@
 # Sambhasha KSU
 
-## Courses
+## Projects
 
-- [Certificate course on The Science of Nāṭya 2021](https://sambhasha-ksu.github.io/courses/science_of_natya_2021/natya_landing/)
-- [Raghuvamsham](https://sambhasha-ksu.github.io/projects/Raghuvamsham/Raghuvamshamv2.html)
+- [Tarkasangraha](https://sambhasha-ksu.github.io/projects/tarkasangraha-tree/index.html)
